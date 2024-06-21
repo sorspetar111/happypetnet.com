@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Calendar example - (добавих drag-drop между двата календара + статично изградих дни, контент със събития)</title>
-    
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <title>Calendar example - (добавих drag-drop между двата календара + статично изградих дни, контент със събития)
+    </title>
 
-   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">  
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css" >
 
- 
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.3.3/jscolor.min.js" defer></script>
 
- 
-   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" defer></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script> -->
 
-    
-    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" defer></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" defer></script>
+
+
+    <script src="calendar.js" defer></script>
+
+
 </head>
 
 <body>
- 
-
-
-   
-
 
     <div class="table-responsive">
         <div data-parse="1595877840000" id="calplaceholder" style="max-height: 500px; margin-bottom: 0;">
@@ -2701,8 +2706,11 @@
     </div>
 
 
-    <script src="calendar.js" defer></script>
-    
+
+
+
+
+
 </body>
 
 </html>
