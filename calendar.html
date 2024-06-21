@@ -1,0 +1,2707 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar example - (добавих drag-drop между двата календара + статично изградих дни, контент със събития)</title>
+    
+   
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+ 
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+
+ 
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" defer></script>
+
+    
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+ 
+
+
+   
+
+
+    <div class="table-responsive">
+        <div data-parse="1595877840000" id="calplaceholder" style="max-height: 500px; margin-bottom: 0;">
+            <div class="cal-sectionDiv">
+                <table class="table table-striped table-bordered">
+                    <thead class="cal-thead">
+                        <tr>
+                            <th class="cal-viewmonth" id="changemonth">juli 2020</th>
+                            <th class="cal-toprow">Wednesday 1</th>
+                            <th class="cal-toprow">Thursday 2</th>
+                            <th class="cal-toprow">Friday 3</th>
+                            <th class="cal-toprow weekend">Saturday 4</th>
+                            <th class="cal-toprow weekend">Sunday 5</th>
+                            <th class="cal-toprow">Monday 6</th>
+                            <th class="cal-toprow">Tuesday 7</th>
+                            <th class="cal-toprow">Wednesday 8</th>
+                            <th class="cal-toprow">Thursday 9</th>
+                            <th class="cal-toprow">Friday 10</th>
+                            <th class="cal-toprow weekend">Saturday 11</th>
+                            <th class="cal-toprow weekend">Sunday 12</th>
+                            <th class="cal-toprow">Monday 13</th>
+                            <th class="cal-toprow">Tuesday 14</th>
+                            <th class="cal-toprow">Wednesday 15</th>
+                            <th class="cal-toprow">Thursday 16</th>
+                            <th class="cal-toprow">Friday 17</th>
+                            <th class="cal-toprow weekend">Saturday 18</th>
+                            <th class="cal-toprow weekend">Sunday 19</th>
+                            <th class="cal-toprow">Monday 20</th>
+                            <th class="cal-toprow">Tuesday 21</th>
+                            <th class="cal-toprow">Wednesday 22</th>
+                            <th class="cal-toprow">Thursday 23</th>
+                            <th class="cal-toprow">Friday 24</th>
+                            <th class="cal-toprow weekend">Saturday 25</th>
+                            <th class="cal-toprow weekend">Sunday 26</th>
+                            <th class="cal-toprow">Monday 27</th>
+                            <th class="cal-toprow">Tuesday 28</th>
+                            <th class="cal-toprow">Wednesday 29</th>
+                            <th class="cal-toprow">Thursday 30</th>
+                            <th class="cal-toprow">Friday 31</th>
+                        </tr>
+
+                    </thead>
+                    <tbody class="cal-tbody">
+                        <tr id="h16">
+                            <td class="cal-usersheader" style="color:#000; background-color:#389fe8; padding: 0px;">Team
+                                1</td>
+                            <td colspan="31" style="color:#FFFFFF; background-color:#389fe8;"></td>
+                        </tr>
+                        <tr id="u1">
+                            <td class="cal-userinfo">
+                                <span><b style="text-decoration: underline">Van Els</b> Numan<span></span></span>
+                                <div class="cal-usercounter">
+                                    <span class="cal-userbadge badge badge-light">140:13</span><span
+                                        class="cal-userbadge badge badge-warning">134:36</span>
+                                </div>
+                                <div class="cal-userarrows">
+                                    <i class="up mdi mdi-arrow-up-bold"></i><i class="down mdi mdi-arrow-down-bold"></i>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="1/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13956"
+                                    data-userid="1" style="border-left: 5px solid rgb(81, 255, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #51FF00; color: #000000">Training</h3>
+                                    <div class="details-uren">
+                                        15:00 - 16:30
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="2/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13957"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(121, 32, 32); position: relative;">
+                                    <h3 class="details-task" style=" background: #792020; color: #FFFFFF">Day Shift</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="3/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13959"
+                                    data-userid="1" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="4/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13958"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        07:30 - 16:30
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="5/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12179"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="6/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12316"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="7/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12117"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="8/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12336"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        12:00 - 19:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="9/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12346"
+                                    data-userid="1" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        13:00 - 20:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="10/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12137"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="11/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12366"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="12/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12376"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="13/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12386"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        17:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="14/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12396"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="15/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12406"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="16/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12416"
+                                    data-userid="1" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        20:00 - 03:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="17/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12426"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        21:00 - 04:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="18/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12436"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="19/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12446"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="20/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12456"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        00:00 - 07:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="21/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12466"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="22/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12476"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        02:00 - 09:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="23/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13960"
+                                    data-userid="1" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="24/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12496"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        04:00 - 11:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="25/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12506"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        05:00 - 12:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="26/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12516"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="27/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12526"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        07:00 - 14:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="28/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13950"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="29/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12546"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        09:00 - 16:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="30/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13949"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="31/7/2020" data-userid="1">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12536"
+                                    data-userid="1"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="u2">
+                            <td class="cal-userinfo">
+                                <span><b style="text-decoration: underline">Henzen</b> Susanna<span></span></span>
+                                <div class="cal-usercounter">
+                                    <span class="cal-userbadge badge badge-light">140:13</span><span
+                                        class="cal-userbadge badge badge-warning">134:36</span>
+                                </div>
+                                <div class="cal-userarrows">
+                                    <i class="up mdi mdi-arrow-up-bold"></i><i class="down mdi mdi-arrow-down-bold"></i>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="1/7/2020" data-userid="2"></td>
+                            <td class="ui-droppable" data-date="2/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12326"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        11:00 - 18:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="3/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="11978"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(255, 184, 72); position: relative;">
+                                    <h3 class="details-task" style=" background: #FFB848; color: #000000">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        17:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="4/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12189"
+                                    data-userid="2" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        21:00 - 04:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="5/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12169"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="6/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13941"
+                                    data-userid="2" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="7/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12127"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        15:00 - 22:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="8/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12008"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="9/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12177"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="10/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="11988"
+                                    data-userid="2" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="11/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12306"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        09:00 - 16:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="12/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12167"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="13/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12217"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="14/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12227"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        01:00 - 08:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="15/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12237"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="16/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12247"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        03:00 - 10:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="17/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13967"
+                                    data-userid="2" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="18/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12267"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        05:00 - 12:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="19/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12277"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        06:00 - 13:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="20/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12287"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        07:00 - 14:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="21/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12297"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="22/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12307"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        09:00 - 16:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="23/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12317"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="24/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12327"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        11:00 - 18:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="25/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12337"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        12:00 - 19:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="26/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12347"
+                                    data-userid="2" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        13:00 - 20:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="27/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12357"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        14:00 - 21:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="28/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12367"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="29/7/2020" data-userid="2">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12377"
+                                    data-userid="2"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="30/7/2020" data-userid="2"></td>
+                            <td class="ui-droppable" data-date="31/7/2020" data-userid="2"></td>
+                        </tr>
+                        <tr id="u3">
+                            <td class="cal-userinfo">
+                                <span><b style="text-decoration: underline">Mak</b> Lokman<span></span></span>
+                                <div class="cal-usercounter">
+                                    <span class="cal-userbadge badge badge-light">140:13</span><span
+                                        class="cal-userbadge badge badge-warning">134:36</span>
+                                </div>
+                                <div class="cal-userarrows">
+                                    <i class="up mdi mdi-arrow-up-bold"></i><i class="down mdi mdi-arrow-down-bold"></i>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="1/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12938"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        12:00 - 19:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="2/7/2020" data-userid="3">
+                            </td>
+                            <td class="ui-droppable" data-date="3/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12266"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        05:00 - 12:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="4/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12286"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        07:00 - 14:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="5/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12107"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="6/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12276"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        06:00 - 13:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="7/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12249"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        03:00 - 10:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="8/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12018"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        04:00 - 11:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="9/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12187"
+                                    data-userid="3" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        21:00 - 04:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="10/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12038"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="11/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12048"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        07:00 - 14:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="12/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12058"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="13/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12068"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        09:00 - 16:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="14/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12078"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        10:00 - 17:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="15/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12088"
+                                    data-userid="3" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        11:00 - 18:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="16/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12098"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        12:00 - 19:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="17/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12108"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="18/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12118"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="19/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12128"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        15:00 - 22:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="20/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12138"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="21/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12158"
+                                    data-userid="3" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="22/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12379"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="23/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12168"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="24/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12178"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="25/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12188"
+                                    data-userid="3" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        21:00 - 04:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="26/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12198"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        22:00 - 05:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="27/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12208"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="28/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13951"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="29/7/2020" data-userid="3">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12228"
+                                    data-userid="3"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        01:00 - 08:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="30/7/2020" data-userid="3"></td>
+                            <td class="ui-droppable" data-date="31/7/2020" data-userid="3"></td>
+                        </tr>
+                        <tr id="u4">
+                            <td class="cal-userinfo">
+                                <span><b style="text-decoration: underline">Boschman</b> Feike<span></span></span>
+                                <div class="cal-usercounter">
+                                    <span class="cal-userbadge badge badge-light">140:13</span><span
+                                        class="cal-userbadge badge badge-warning">134:36</span>
+                                </div>
+                                <div class="cal-userarrows">
+                                    <i class="up mdi mdi-arrow-up-bold"></i><i class="down mdi mdi-arrow-down-bold"></i>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="1/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12129"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        15:00 - 22:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="2/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13954"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="3/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12149"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        17:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="4/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13952"
+                                    data-userid="4" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        11:00 - 18:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="5/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13953"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="6/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12356"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        14:00 - 21:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="7/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="11998"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        02:00 - 09:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="8/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12199"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        22:00 - 05:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="9/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12209"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="10/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12219"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="11/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12229"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        01:00 - 08:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="12/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12259"
+                                    data-userid="4" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="13/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12239"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="14/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12620"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="15/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12269"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        05:00 - 12:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="16/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12279"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        06:00 - 13:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="17/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12289"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        07:00 - 14:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="18/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12299"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="19/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12309"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        09:00 - 16:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="20/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12319"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="21/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12329"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        11:00 - 18:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="22/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12339"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        12:00 - 19:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="23/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12349"
+                                    data-userid="4" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        13:00 - 20:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="24/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12359"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        14:00 - 21:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="25/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12369"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="26/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12218"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="27/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12389"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        17:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="28/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12399"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="29/7/2020" data-userid="4">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12409"
+                                    data-userid="4"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="30/7/2020" data-userid="4"></td>
+                            <td class="ui-droppable" data-date="31/7/2020" data-userid="4"></td>
+                        </tr>
+                        <tr id="h17">
+                            <td class="cal-usersheader" style="color:#FFF; background-color:#570099; padding: 0px;">Team
+                                2</td>
+                            <td colspan="31" style="color:#FFF; background-color:#570099;"></td>
+                        </tr>
+                        <tr id="u5">
+                            <td class="cal-userinfo">
+                                <span><b style="text-decoration: underline">Mientjes</b> Dila<span></span></span>
+                                <div class="cal-usercounter">
+                                    <span class="cal-userbadge badge badge-light">140:13</span><span
+                                        class="cal-userbadge badge badge-warning">134:36</span>
+                                </div>
+                                <div class="cal-userarrows">
+                                    <i class="up mdi mdi-arrow-up-bold"></i><i class="down mdi mdi-arrow-down-bold"></i>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="1/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12540"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="2/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12550"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        09:00 - 16:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="3/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12560"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        10:00 - 17:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="4/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12570"
+                                    data-userid="5" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        11:00 - 18:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="5/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12580"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+
+                                        12:00 - 19:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="6/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12590"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="7/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12600"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="8/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12610"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        15:00 - 22:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="9/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="11991"
+                                    data-userid="5" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="10/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12630"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        17:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="11/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12640"
+                                    data-userid="5" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="12/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12650"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="13/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12660"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="14/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12670"
+                                    data-userid="5" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        21:00 - 04:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="15/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12680"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        22:00 - 05:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="16/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12690"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="17/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12700"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="18/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12710"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        01:00 - 08:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="19/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12720"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="20/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12730"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        03:00 - 10:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="21/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13961"
+                                    data-userid="5" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="22/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12750"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        05:00 - 12:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="23/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12760"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="24/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12770"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        07:00 - 14:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="25/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12780"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="26/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12790"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        09:00 - 16:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="27/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12800"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        10:00 - 17:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="28/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12810"
+                                    data-userid="5" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        11:00 - 18:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="29/7/2020" data-userid="5">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12820"
+                                    data-userid="5"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        00:00 - 07:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="30/7/2020" data-userid="5"></td>
+                            <td class="ui-droppable" data-date="31/7/2020" data-userid="5"></td>
+                        </tr>
+                        <tr id="u6">
+                            <td class="cal-userinfo">
+                                <span><b style="text-decoration: underline">Verweij</b> Romme<span></span></span>
+                                <div class="cal-usercounter">
+                                    <span class="cal-userbadge badge badge-light">140:13</span><span
+                                        class="cal-userbadge badge badge-warning">134:36</span>
+                                </div>
+                                <div class="cal-userarrows">
+                                    <i class="up mdi mdi-arrow-up-bold"></i><i class="down mdi mdi-arrow-down-bold"></i>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="1/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12891"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        07:00 - 14:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="2/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12901"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="3/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12911"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        09:00 - 16:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="4/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12921"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        10:00 - 17:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="5/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12931"
+                                    data-userid="6" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        11:00 - 18:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="6/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12941"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        12:00 - 19:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="7/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12197"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        22:00 - 05:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="8/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="11971"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="9/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="11981"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        17:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="10/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12207"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="11/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12001"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        02:00 - 09:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="12/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12011"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="13/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12021"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        04:00 - 11:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="14/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12031"
+                                    data-userid="6" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="15/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12041"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="16/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12051"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        07:00 - 14:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="17/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12061"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="18/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12071"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        09:00 - 16:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="19/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12081"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        10:00 - 17:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="20/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12091"
+                                    data-userid="6" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        11:00 - 18:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="21/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12101"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        12:00 - 19:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="22/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12111"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="23/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12121"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="24/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12131"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        15:00 - 22:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="25/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12141"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="26/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12151"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        17:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="27/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12161"
+                                    data-userid="6" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="28/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12171"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="29/7/2020" data-userid="6">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12181"
+                                    data-userid="6"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="30/7/2020" data-userid="6"></td>
+                            <td class="ui-droppable" data-date="31/7/2020" data-userid="6"></td>
+                        </tr>
+                        <tr id="u7">
+                            <td class="cal-userinfo">
+                                <span><b style="text-decoration: underline">Houdhuis</b> Willy<span></span></span>
+                                <div class="cal-usercounter">
+                                    <span class="cal-userbadge badge badge-light">140:13</span><span
+                                        class="cal-userbadge badge badge-warning">134:36</span>
+                                </div>
+                                <div class="cal-userarrows">
+                                    <i class="up mdi mdi-arrow-up-bold"></i><i class="down mdi mdi-arrow-down-bold"></i>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="1/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12652"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="2/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12662"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="3/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12672"
+                                    data-userid="7" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        21:00 - 04:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="4/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12682"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        22:00 - 05:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="5/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12692"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="6/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12702"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="7/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12712"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        01:00 - 08:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="8/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12722"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="9/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12732"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        03:00 - 10:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="10/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12742"
+                                    data-userid="7" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="11/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12752"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        05:00 - 12:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="12/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12762"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="13/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12772"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        07:00 - 14:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="14/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12782"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="15/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12792"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        09:00 - 16:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="16/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12802"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        10:00 - 17:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="17/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12812"
+                                    data-userid="7" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        11:00 - 18:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="18/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12822"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        00:00 - 07:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="19/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12832"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="20/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12842"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        02:00 - 09:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="21/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="13963"
+                                    data-userid="7" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="22/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12862"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        04:00 - 11:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="23/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12872"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        05:00 - 12:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="24/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12882"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="25/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12892"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        07:00 - 14:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="26/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12902"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="27/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12912"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        09:00 - 16:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="28/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12922"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        10:00 - 17:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="29/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12932"
+                                    data-userid="7" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        11:00 - 18:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="30/7/2020" data-userid="7">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12148"
+                                    data-userid="7"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        17:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="31/7/2020" data-userid="7"></td>
+                        </tr>
+                        <tr id="u8">
+                            <td class="cal-userinfo">
+                                <span><b style="text-decoration: underline">Kuin</b> Souhaila<span></span></span>
+                                <div class="cal-usercounter">
+                                    <span class="cal-userbadge badge badge-light">140:13</span><span
+                                        class="cal-userbadge badge badge-warning">134:36</span>
+                                </div>
+                                <div class="cal-userarrows">
+                                    <i class="up mdi mdi-arrow-up-bold"></i><i class="down mdi mdi-arrow-down-bold"></i>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="1/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12103"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        12:00 - 19:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="2/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12113"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="3/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12123"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="4/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12133"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        15:00 - 22:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="5/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12143"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="6/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12153"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        17:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="7/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12163"
+                                    data-userid="8" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="8/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12173"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="9/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12183"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="10/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12193"
+                                    data-userid="8" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        21:00 - 04:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="11/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12203"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        22:00 - 05:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="12/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12213"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="13/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12223"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="14/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12233"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        01:00 - 08:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="15/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12243"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(30, 137, 90); position: relative;">
+                                    <h3 class="details-task" style=" background: #1E895A; color: #FFFFFF">Vacation</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="16/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12253"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        03:00 - 10:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="17/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12263"
+                                    data-userid="8" style="border-left: 5px solid rgb(175, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #AF0000; color: #FFFFFF">Sick</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="18/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12273"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        05:00 - 12:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="19/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12283"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        06:00 - 13:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="20/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12293"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        07:00 - 14:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="21/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12303"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="22/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12313"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        09:00 - 16:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="23/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12323"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="24/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12333"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        11:00 - 18:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="25/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12343"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        12:00 - 19:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="weekend ui-droppable" data-date="26/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12353"
+                                    data-userid="8" style="border-left: 5px solid rgb(189, 0, 0); position: relative;">
+                                    <h3 class="details-task" style=" background: #BD0000; color: #FFFFFF">Extra shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        13:00 - 20:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="27/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12363"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        14:00 - 21:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="28/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12373"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="29/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12383"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(126, 126, 126); position: relative;">
+                                    <h3 class="details-task" style=" background: #7E7E7E; color: #FFFFFF">Rest</h3>
+                                    <div class="details-uren">
+                                        00:00 - 00:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="30/7/2020" data-userid="8">
+                                <div class="drag details ui-draggable ui-draggable-handle" data-taskid="12105"
+                                    data-userid="8"
+                                    style="border-left: 5px solid rgb(36, 115, 171); position: relative;">
+                                    <h3 class="details-task" style=" background: #2473AB; color: #FFFFFF">Late shift
+                                    </h3>
+                                    <div class="details-uren">
+                                        12:00 - 19:00
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="ui-droppable" data-date="31/7/2020" data-userid="8"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="edittask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="modal-edit" class="modal-body">
+                    <div class="input-group mb-2 text-center">
+                        <i style="color:red">Edit box is only for preview purposes and does not save any data.</i>
+                    </div>
+                    <div class="input-group mb-2">
+                        <label for="cono1" class="col-sm-2 text-left control-label col-form-label">Task:</label>
+                        <input type="text" class="form-control" id="taak" placeholder="Taak">
+                    </div>
+                    <div class="input-group mb-2">
+                        <label for="cono1" class="col-sm-2 text-left control-label col-form-label">Date:</label>
+                        <input id="date" class="form-control taskstart" placeholder="dd/mm/yyyy" type="text">
+                    </div>
+                    <div class="input-group">
+                        <div class="form-group" style="width:125px; margin-left:15px; margin-right:5px;">
+                            <label for="cono1" class="col-sm-3 text-left control-label col-form-label"
+                                style="padding-left: 0px;">Text:</label>
+                            <input type="text" id="ktxt" data-jscolor="" class="form-control" name="ctxt" value=""
+                                onchange="changeColor('ctxt', this.value);">
+                        </div>
+                        <div class="form-group" style="width:125px; margin-left:5px; margin-right:5px;">
+                            <label for="cono1" class="col-sm-3 text-left control-label col-form-label"
+                                style="padding-left: 0px;">Background:</label>
+                            <input type="text" id="kbg" data-jscolor="" class="form-control" name="cbg" value=""
+                                onchange="changeColor('cbg', this.value);">
+                        </div>
+                        <div class="form-group" style="width:175px; margin-left:5px;">
+                            <label for="cono1" class="col-sm-5 text-left control-label col-form-label"
+                                style="padding-left: 0px;">Preview:</label>
+                            <div id="demotaak1" data-taskid="3" class="form-control details"
+                                style="border-left:5px solid #959595; position:relative; height: 50px;">
+                                <h3 id="demotaak2" class="details-task" style="background:#959595; color:#FFFFFF">
+                                    Example</h3>
+                                <p class="details-uren">08:00 - 16:30</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="modal fade" id="deletetask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <div id="modal-delete" class="modal-body" style="text-align: center;">
+                </div>
+                <div class="modal-footer">
+                    <input id="taskdelid" type="hidden" value="">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                    <button id="confdelete" type="button" class="btn btn-danger">Yes</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="calendar.js" defer></script>
+    
+</body>
+
+</html>
